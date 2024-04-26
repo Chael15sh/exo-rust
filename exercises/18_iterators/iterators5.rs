@@ -11,6 +11,20 @@
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a
 // hint.
 
+
+
+
+/// map is a hashmap with String keys and Progress values.
+/// map = { "variables1": Complete, "from_str": None, ... }
+/// Nous utilisons la méthode `values()` pour obtenir un itérateur sur les valeurs du `HashMap`.
+/// Ensuite, nous utilisons la méthode `filter()` pour ne conserver que les valeurs qui correspondent au paramètre `value`.
+/// Enfin, nous utilisons la méthode `count()` pour compter le nombre d'éléments dans l'itérateur filtré.
+/// collection is a slice of hashmaps.
+/// collection = [{ "variables1": Complete, "from_str": None, ... },
+///     { "variables2": Complete, ... }, ... ]
+/// Nous utilisons la méthode `values()` pour obtenir un itérateur sur les valeurs du `HashMap`.
+/// Ensuite, nous utilisons la méthode `filter()` pour ne conserver que les valeurs qui correspondent au paramètre `value`.
+/// Enfin, nous utilisons la méthode `count()` pour compter le nombre d'éléments dans l'itérateur filtré.
 use std::collections::HashMap;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -31,11 +45,6 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 }
 
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
-    // map is a hashmap with String keys and Progress values.
-    // map = { "variables1": Complete, "from_str": None, ... }
-    // Nous utilisons la méthode `values()` pour obtenir un itérateur sur les valeurs du `HashMap`.
-    // Ensuite, nous utilisons la méthode `filter()` pour ne conserver que les valeurs qui correspondent au paramètre `value`.
-    // Enfin, nous utilisons la méthode `count()` pour compter le nombre d'éléments dans l'itérateur filtré.
     map.values().filter(|&v| v == &value).count()
 }
 
@@ -52,12 +61,6 @@ fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progres
 }
 
 fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
-    // collection is a slice of hashmaps.
-    // collection = [{ "variables1": Complete, "from_str": None, ... },
-    //     { "variables2": Complete, ... }, ... ]
-    // Nous utilisons la méthode `values()` pour obtenir un itérateur sur les valeurs du `HashMap`.
-    // Ensuite, nous utilisons la méthode `filter()` pour ne conserver que les valeurs qui correspondent au paramètre `value`.
-    // Enfin, nous utilisons la méthode `count()` pour compter le nombre d'éléments dans l'itérateur filtré.
    collection.iter().flat_map(|map| map.values()).filter(|&v| v == &value).count()
 }
 

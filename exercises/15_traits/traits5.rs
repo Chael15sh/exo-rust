@@ -29,7 +29,7 @@ impl SomeTrait for OtherStruct {}
 impl OtherTrait for OtherStruct {}
 
 // YOU MAY ONLY CHANGE THE NEXT LINE
-// On utilise une fonction générique qui prend un type T qui implémente à la fois SomeTrait et OtherTrait
+/// On utilise une fonction générique qui prend un type T qui implémente à la fois SomeTrait et OtherTrait
 fn some_func<T: SomeTrait + OtherTrait>(item: T) -> bool {
     item.some_function() && item.other_function()
 }

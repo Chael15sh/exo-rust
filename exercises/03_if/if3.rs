@@ -2,17 +2,17 @@
 //
 // Execute `rustlings hint if3` or use the `hint` watch subcommand for a hint.
 
-
-
+/// .0 et a modifier car il est attendu un chiffre entier
+/// "Unknown" et a modifier car  chaque branche d'une expression `if` doit retourner le même type de valeur
 pub fn animal_habitat(animal: &str) -> &'static str {
     let identifier = if animal == "crab" {
         1
     } else if animal == "gopher" {
-        2 //.0 et a modifier car il est attendu un chiffre entier
+        2 
     } else if animal == "snake" {
         3
     } else {
-        4 //"Unknown" et a modifier car  chaque branche d'une expression `if` doit retourner le même type de valeur
+        4 
     };
 
     // DO NOT CHANGE THIS STATEMENT BELOW

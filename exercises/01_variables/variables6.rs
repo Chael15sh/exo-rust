@@ -4,8 +4,9 @@
 // hint.
 
 
+/// pour chaque constant il faut préciser le type
 
-const NUMBER : i32 = 3 ; // pour chaque constant il faut préciser le type
+const NUMBER : i32 = 3 ; 
 fn main() {
     println!("Number {}", NUMBER);
 }

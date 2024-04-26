@@ -10,9 +10,18 @@
 // hint.
 
 
+/// This is a custom error type that we will be using in `parse_pos_nonzero()`.
+/// Cette fonction convertit une erreur de création en ParsePosNonzeroError.
+/// Cette fonction convertit une erreur de parsing en ParsePosNonzeroError.
+/// Utilisez `map_err` pour convertir l'erreur de parsing en ParsePosNonzeroError.
+/// Si `parse()` retourne une erreur, elle est convertie en ParsePosNonzeroError
+/// à l'aide de la fonction `from_parseint`.
+/// Appel `new()` pour créer un PositiveNonzeroInteger à partir du résultat du parsing.
+/// Si `new()` retourne une erreur, elle est conservée telle quelle.
+
 use std::num::ParseIntError;
 
-// This is a custom error type that we will be using in `parse_pos_nonzero()`.
+
 #[derive(PartialEq, Debug)]
 enum ParsePosNonzeroError {
     Creation(CreationError),
@@ -20,25 +29,22 @@ enum ParsePosNonzeroError {
 }
 
 impl ParsePosNonzeroError {
-    // Cette fonction convertit une erreur de création en ParsePosNonzeroError.
+    
     fn from_creation(err: CreationError) -> ParsePosNonzeroError {
         ParsePosNonzeroError::Creation(err)
     }
 
-    // Cette fonction convertit une erreur de parsing en ParsePosNonzeroError.
+    
     fn from_parseint(err: ParseIntError) -> ParsePosNonzeroError {
         ParsePosNonzeroError::ParseInt(err)
     }
 }
 
 fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroError> {
-    // Utilisez `map_err` pour convertir l'erreur de parsing en ParsePosNonzeroError.
-    // Si `parse()` retourne une erreur, elle est convertie en ParsePosNonzeroError
-    // à l'aide de la fonction `from_parseint`.
+    
     let x: i64 = s.parse().map_err(ParsePosNonzeroError::from_parseint)?;
     
-    // Appel `new()` pour créer un PositiveNonzeroInteger à partir du résultat du parsing.
-    // Si `new()` retourne une erreur, elle est conservée telle quelle.
+    
     PositiveNonzeroInteger::new(x).map_err(ParsePosNonzeroError::from_creation)
 }
 

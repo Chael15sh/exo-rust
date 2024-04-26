@@ -14,13 +14,13 @@ fn main() {
     string_uppercase(data);
 }
 
-// Should not take ownership
+/// Should not take ownership
 fn get_char(data: &String) -> char {
     data.chars().last().unwrap()
 }
 
-// Should take ownership
-// on permuté les & pour ce string ne soit plus une réference et l'autre string le soit et donc permuté le ownership 
+/// Should take ownership
+/// on permuté les & pour ce string ne soit plus une réference et l'autre string le soit et donc permuté le ownership 
 fn string_uppercase(mut data: String) { 
     data = data.to_uppercase();
 

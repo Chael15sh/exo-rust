@@ -11,7 +11,7 @@
 
 // TODO: Complete this use statement
 use  std::time::{SystemTime, UNIX_EPOCH};
-// on utilise cette commande pour apporter SystemTime et UNIX_EPOCH du module std::time
+/// on utilise cette commande pour apporter SystemTime et UNIX_EPOCH du module std::time
 
 fn main() {
     match SystemTime::now().duration_since(UNIX_EPOCH) {

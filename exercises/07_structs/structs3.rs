@@ -15,11 +15,15 @@ struct Package {
     weight_in_grams: u32,
 }
 
+/// This is not how you should handle errors in Rust,
+/// but we will learn about error handling later.
+/// pour renvoie la valeur true si les pays de l'expéditeur et du destinataire sont différents, et false dans le cas contraire 
+/// pour calculer les frais totaux pour le paquet en fonction du poids et du taux en cents par gramme fourni
+
 impl Package {
     fn new(sender_country: String, recipient_country: String, weight_in_grams: u32) -> Package {
         if weight_in_grams < 10 {
-            // This is not how you should handle errors in Rust,
-            // but we will learn about error handling later.
+            
             panic!("Can not ship a package with weight below 10 grams.")
         } else {
             Package {
@@ -32,13 +36,11 @@ impl Package {
 
     fn is_international(&self) -> bool {
         self.sender_country != self.recipient_country
-        // pour renvoie la valeur true si les pays de l'expéditeur et du destinataire sont différents, et false dans le cas contraire 
     }
 
 
     fn get_fees(&self, cents_per_gram: u32) -> u32 {
         self.weight_in_grams * cents_per_gram
-        // pour calculer les frais totaux pour le paquet en fonction du poids et du taux en cents par gramme fourni
     }
 }
 
