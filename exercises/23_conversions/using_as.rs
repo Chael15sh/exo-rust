@@ -10,11 +10,10 @@
 // Execute `rustlings hint using_as` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
+/// L'erreur indique qu'il n'y a pas d'implémentation pour diviser un f64 par un usize, ce qui se produit lorsque vous divisez total par values.len(). Pour résoudre ce problème, vous pouvez utiliser l'opérateur as pour convertir values.len() en f64 avant d'effectuer la division.
 fn average(values: &[f64]) -> f64 {
     let total = values.iter().sum::<f64>();
-    total / values.len()
+    total / values.len() as f64
 }
 
 fn main() {
